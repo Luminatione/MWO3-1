@@ -79,10 +79,9 @@ jobs:
       - run: git add MWO3.1/version
       - run: git commit -m "version update"
       - run: git push
-      - run: cmd /c "rmdir MWO3.1 /S /Q"
-      - run: cmd /c dir
-          
-        
+      - run: cmd /c cd ..
+      - run: cmd /c "rmdir ./MWO3.1 /S /Q"
+
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
