@@ -59,8 +59,9 @@ jobs:
           cmd /c cd MWO3.1
           cmd /c dir
           cmd /c update_version.bat
+          cmd /c cd ..
       - run: cmd /c dir
-      - run: git add version
+      - run: git add MWO3.1/version
       - run: git commit -m "version update"
       - run: git push
       
