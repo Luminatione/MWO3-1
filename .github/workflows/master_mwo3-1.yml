@@ -80,6 +80,7 @@ jobs:
       - run: git commit -m "version update"
       - run: git push
       - run: cmd /c "rmdir MWO3.1 /S /Q"
+      - run: cmd /c dir
           
         
       - name: Deploy to Azure Web App
