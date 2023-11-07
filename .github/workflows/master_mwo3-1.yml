@@ -50,8 +50,8 @@ jobs:
 
       - name: Update Version
         run: |
-          echo dir
-          echo %cd%
+          cmd /c dir
+          echo ${{ github.workspace }}
           cmd /c update_version.bat
 
       - name: Deploy to Azure Web App Dev
