@@ -42,20 +42,7 @@ jobs:
       name: 'Development'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
-    steps:
-      - uses: actions/checkout@v3
-      - uses: fregante/setup-git-user@v2
-      - run: cmd /c ".\MWO3.1\update_version.bat"
-      - run: git add MWO3.1/version
-      - run: git commit -m "version update"
-      - run: git push
-      - run: | 
-          cmd /c dir
-          cmd /cd ..
-          cmd /c dir
-          cmd /c "del * /S /Q"
-          cmd /c dir
-          
+    steps:     
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
         with:
@@ -81,6 +68,16 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
+      - uses: actions/checkout@v3
+      - uses: fregante/setup-git-user@v2
+      - run: cmd /c ".\MWO3.1\update_version.bat"
+      - run: git add MWO3.1/version
+      - run: git commit -m "version update"
+      - run: git push
+      - run: | 
+          cmd /cd ..
+          cmd /c "del * /S /Q"
+    
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
         with:
