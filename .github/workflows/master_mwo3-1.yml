@@ -65,6 +65,12 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
+      - name: Update Version
+        run: |
+           update_version.bat
+           
+      - name: Rebuild Solution
+        
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
         with:
