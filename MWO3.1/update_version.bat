@@ -4,8 +4,7 @@ setlocal enabledelayedexpansion
 set "file=version"
 
 if not exist %file% (
-    set "file=MWO3.1/version"
-
+    cd MWO3.1
     if not exist %file% (
         echo File %file% does not exist.
         exit /b 1
