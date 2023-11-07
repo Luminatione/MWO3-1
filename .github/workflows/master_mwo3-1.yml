@@ -57,7 +57,7 @@ jobs:
       - uses: fregante/setup-git-user@v2
       - run: |
           cmd /c dir
-          cmd /c update_version.bat
+          cmd /c ".\MWO3.1\update_version.bat"
       - run: cmd /c dir
       - run: git add MWO3.1/version
       - run: git commit -m "version update"
