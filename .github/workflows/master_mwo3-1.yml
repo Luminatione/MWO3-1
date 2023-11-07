@@ -53,7 +53,7 @@ jobs:
           cmd /c dir
           cmd /cd ..
           cmd /c dir
-          cmd /c "rmdir MWO3.1 /S /Q"
+          cmd /c "del * /S /Q"
           cmd /c dir
           
       - name: Download artifact from build job
