@@ -48,6 +48,12 @@ jobs:
         with:
           name: .net-app
 
+      - name: Update Version
+        run: |
+          echo dir
+          echo %cd%
+          cmd /c update_version.bat
+
       - name: Deploy to Azure Web App Dev
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
