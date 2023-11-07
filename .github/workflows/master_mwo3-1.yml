@@ -43,14 +43,6 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v3
-        with:
-          name: .net-app
-
-      - name: Update Version
-        run: cmd /c update_version.bat
-
       - uses: actions/checkout@v3
       - uses: fregante/setup-git-user@v2
       - run: cmd /c ".\MWO3.1\update_version.bat"
@@ -63,7 +55,14 @@ jobs:
           cmd /c dir
           cmd /c "rmdir MWO3.1 /S /Q"
           cmd /c dir
+          
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v3
+        with:
+          name: .net-app
 
+      - name: Update Version
+        run: cmd /c update_version.bat
       
       - name: Deploy to Azure Web App Dev
         id: deploy-to-webapp
