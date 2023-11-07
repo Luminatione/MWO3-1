@@ -66,11 +66,8 @@ jobs:
 
     steps:
       - name: Update Version
-        run: |
-           update_version.bat
-           
-      - name: Rebuild Solution
-        
+        run: cmd /c update_version.bat
+
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
         with:
