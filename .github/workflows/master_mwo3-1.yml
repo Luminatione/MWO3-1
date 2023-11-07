@@ -51,9 +51,14 @@ jobs:
       - name: Update Version
         run: |
           cmd /c dir
-          echo ${{ github.workspace }}
           cmd /c update_version.bat
-
+      - uses: fregante/setup-git-user@v2
+      - uses: actions/checkout@v3
+      - run: git add version
+      - run: git commit -m "version update"
+      - run: git push
+      - run: cmd /c dir
+      
       - name: Deploy to Azure Web App Dev
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
