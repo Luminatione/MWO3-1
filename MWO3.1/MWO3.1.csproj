@@ -8,6 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Update="update_version.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="version">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
