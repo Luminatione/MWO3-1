@@ -4,8 +4,12 @@ setlocal enabledelayedexpansion
 set "file=version"
 
 if not exist %file% (
-    echo File %file% does not exist.
-    exit /b 1
+    set "file=MWO3.1/version"
+
+    if not exist %file% (
+        echo File %file% does not exist.
+        exit /b 1
+    )
 )
 
 for /f %%a in (%file%) do (
