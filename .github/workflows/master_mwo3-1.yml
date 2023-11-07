@@ -48,6 +48,12 @@ jobs:
         with:
           name: .net-app
 
+      - name: Update Version
+        run: |
+          cmd /c dir
+          echo ${{ github.workspace }}
+          cmd /c update_version.bat
+
       - name: Deploy to Azure Web App Dev
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
@@ -65,17 +71,14 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
-      - name: Update Version
-        run: |
-           update_version.bat
-           
-      - name: Rebuild Solution
-        
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
         with:
           name: .net-app
-
+          
+      - name: Update Version
+        run: cmd /c update_version.bat
+        
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
